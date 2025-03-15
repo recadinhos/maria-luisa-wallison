@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="coracoes.png" type="image/x-icon">
+    <title>Eu Te Amo</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0bOqCHcUOMEDoDqYUL0PLW?utm_source=generator" width="300" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      
+      <img src="img-casal.jpeg" alt="Foto do casal" class="photo">
+      
+      <h2>Eu te amo há:</h2>
+      <p id="timer"></p>
+      
+      <p class="message">Oii meu amor, obrigada por tantos momentos incríveis e por sempre estar ao meu lado, você é uma pessoa incrível, saiba que sempre estarei aqui ao seu lado lhe apoiando, cuidando de você e demonstrando todo o amor e carinho que tenho por ti!
+        Você é sem dúvidas o melhor namorado do mundo, eu te amo infinitamente ❤️
+        Eu por você, você por mim e Deus por nós.❤️</p>
+    </div>
+
+    <script>
+      function updateTimer() {
+        const startDate = new Date("2024-05-09T00:00:00");
+        const now = new Date();
+        const diff = now - startDate;
+
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+        const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+        const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('timer').innerHTML = `${years} anos, ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+      }
+
+      setInterval(updateTimer, 1000);
+
+      // Função para criar coração caindo
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+
+      setInterval(createHeart, 300);
+    </script>
+
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 30px;
+        margin-bottom: 100px;
+        overflow: hidden;
+      }
+
+      .container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
+      }
+
+      iframe {
+        border-radius: 12px;
+        margin-bottom: 20px; 
+      }
+
+      .photo {
+        width: 300px;
+        border-radius: 20px;
+        margin: 20px auto;
+      }
+
+      #timer {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .message {
+        width: 70%;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      /* Estilo do coração */
+      .heart {
+        position: fixed;
+        top: -10px;
+        font-size: 24px;
+        color: red;
+        animation: fall linear infinite;
+        pointer-events: none;
+      }
+
+      /* Animação do coração caindo */
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+    </style>
+  </body>
+</html>
